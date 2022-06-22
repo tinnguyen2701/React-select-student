@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App {
+  padding: 10px;
+}
+
+table {
+  border-spacing: 15px;
+  border-top: 5px solid dodgerblue;
+  width: 100%;
+  border-collapse: collapse; 
+  box-shadow: 1px 2px 4px rgb(0 0 0 / 50%);
+  table-layout: fixed;
+}
+
+th {
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid #4b4254;
+  line-height: 40px;
+  min-height: 40px;
+  height: 40px;
+}
+
+.header--name {
+  text-align: left;
+}
+
+.total-student-selected {
+  padding: 5px;
+  text-align: right;
+}
