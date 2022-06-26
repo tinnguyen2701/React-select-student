@@ -3,7 +3,7 @@ import { dataSourceLicense, selectedLicenseIds } from "../../Data/index.tsx";
 import TableSelector from "../TableSelector/index.tsx";
 
 export interface License {
-    id: number,
+    licenseId: number,
     order: number,
     activeDate: string,
     expiredDate: string,
@@ -18,9 +18,9 @@ export const columnLicenses = [
         dataIndex: ""
     },
     {
-        key: "id",
+        key: "licenseId",
         title: "Id",
-        dataIndex: "id"
+        dataIndex: "licenseId"
     },
     {
         key: "order",
@@ -45,7 +45,7 @@ export const columnLicenses = [
 ]
 
 const LicenseSelector: React.FC = () => {
-    const [disabledIds] = useState<number[]>(dataSourceLicense.filter(_ => _.available === 0 || new Date(_.expiredDate).getTime() < (new Date()).getTime()).map(_ => _.id));
+    const [disabledIds] = useState<number[]>(dataSourceLicense.filter(_ => _.available === 0 || new Date(_.expiredDate).getTime() < (new Date()).getTime()).map(_ => _.licenseId));
     
     const [selectedCurrentIds, setSelectedCurrentIds] = useState<number[]>(selectedLicenseIds);
     
@@ -65,7 +65,8 @@ const LicenseSelector: React.FC = () => {
                 datasource={dataSourceLicense} 
                 selectedCurrentIds={selectedCurrentIds}
                 disabledIds={disabledIds}
-                onChangeSelected={onChangeSelected} />
+                onChangeSelected={onChangeSelected} 
+                getRowKey={(record: License) => record.licenseId} />
         </>
     )
 }

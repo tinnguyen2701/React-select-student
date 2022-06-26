@@ -1,14 +1,15 @@
 import React from "react"
 
-interface columnProp {
+interface columnProps<T> {
     columns: any[],
-    datasource: any[], // TODO: maybe student, class, license. need a way to generic type
+    datasource: T[], // TODO: maybe student, class, license. need a way to generic type
     selectedCurrentIds: number[],
     disabledIds: number[],
-    onChangeSelected: any // TODO: specify a type
+    onChangeSelected: any // TODO: specify a type,
+    getRowKey: (record: T) => number 
 }
 
-const TableSelector: React.FC<columnProp> = (props: columnProp) => {
+const TableSelector = (props: columnProps<any>) => {
     const columns = props.columns;
     const datasource = props.datasource;
     const selectedCurrentIds = props.selectedCurrentIds;
@@ -81,13 +82,15 @@ const TableSelector: React.FC<columnProp> = (props: columnProp) => {
                                             let data: any = getTData(index, indexCol);
 
                                             if (data == null) {
+                                                let rowId = props.getRowKey(row);
+
                                                 // TODO: Hard code for checkbox, need more dynamic more
                                                 return <td key={indexCol}>
                                                     <input 
                                                         type="checkbox"
-                                                        disabled={isDisabled(row.id)}
-                                                        checked={isSelection(row.id)}
-                                                        onChange={() => props.onChangeSelected(row.id)}
+                                                        disabled={isDisabled(rowId)}
+                                                        checked={isSelection(rowId)}
+                                                        onChange={() => props.onChangeSelected(rowId)}
                                                     />
                                                 </td>
                                             } else {

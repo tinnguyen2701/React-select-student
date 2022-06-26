@@ -3,7 +3,7 @@ import { dataSourceClass, selectedClassIds } from "../../Data/index.tsx";
 import TableSelector from "../TableSelector/index.tsx";
 
 export interface Class {
-    id: number,
+    classId: number,
     code: string,
     className: string,
     status: boolean
@@ -17,9 +17,9 @@ export const columnClasses = [
         dataIndex: ""
     },
     {
-        key: "id",
+        key: "classId",
         title: "Id",
-        dataIndex: "id"
+        dataIndex: "classId"
     },
     {
         key: "code",
@@ -39,7 +39,7 @@ export const columnClasses = [
 ]
 
 const ClassSelector: React.FC = () => {
-    const [disabledIds] = useState<number[]>(dataSourceClass.filter(_ => _.status === false).map(_ => _.id));
+    const [disabledIds] = useState<number[]>(dataSourceClass.filter(_ => _.status === false).map(_ => _.classId));
     
     const [selectedCurrentIds, setSelectedCurrentIds] = useState<number[]>(selectedClassIds);
     
@@ -59,7 +59,8 @@ const ClassSelector: React.FC = () => {
                 datasource={dataSourceClass} 
                 selectedCurrentIds={selectedCurrentIds}
                 disabledIds={disabledIds}
-                onChangeSelected={onChangeSelected} />
+                onChangeSelected={onChangeSelected}
+                getRowKey={(record: Class) => record.classId} />
         </>
     )
 }

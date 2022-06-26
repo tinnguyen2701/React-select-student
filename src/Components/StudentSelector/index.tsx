@@ -3,7 +3,7 @@ import { dataSourceStudent, selectedStudentIds } from "../../Data/index.tsx";
 import TableSelector from "../TableSelector/index.tsx";
 
 export interface Student {
-    id: number,
+    studentId: number,
     firstName: string,
     lastName: string,
     isAssigned: boolean
@@ -17,9 +17,9 @@ export const columnStudents = [
         dataIndex: ""
     },
     {
-        key: "id",
+        key: "studentId",
         title: "Id",
-        dataIndex: "id"
+        dataIndex: "studentId"
     },
     {
         key: "firstName",
@@ -39,7 +39,7 @@ export const columnStudents = [
 ]
 
 const StudentSelector: React.FC = () => {
-    const [disabledIds] = useState<number[]>(dataSourceStudent.filter(student => student.isAssigned === true).map(_ => _.id));
+    const [disabledIds] = useState<number[]>(dataSourceStudent.filter(student => student.isAssigned === true).map(_ => _.studentId));
     
     const [selectedCurrentIds, setSelectedCurrentIds] = useState<number[]>(selectedStudentIds);
     
@@ -59,7 +59,8 @@ const StudentSelector: React.FC = () => {
                 datasource={dataSourceStudent} 
                 selectedCurrentIds={selectedCurrentIds}
                 disabledIds={disabledIds}
-                onChangeSelected={onChangeSelected} />
+                onChangeSelected={onChangeSelected}
+                getRowKey={(record: Student) => record.studentId} />
         </>
     )
 }

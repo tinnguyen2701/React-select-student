@@ -2,37 +2,37 @@ import { Class } from "../Components/ClassSelector";
 
 export const dataSourceClass: Class[] = [
     {
-        id: 1,
+        classId: 1,
         code: 'cls',
         className: '01',
         status: false
     },
     {
-        id: 2,
+        classId: 2,
         code: 'cls',
         className: '02',
         status: true
     },
     {
-        id: 3,
+        classId: 3,
         code: 'cls',
         className: '03',
         status: true
     },
     {
-        id: 4,
+        classId: 4,
         code: 'cls',
         className: '04',
         status: false
     },
     {
-        id: 5,
+        classId: 5,
         code: 'cls',
         className: '05',
         status: true
     },
     {
-        id: 6,
+        classId: 6,
         code: 'cls',
         className: '06',
         status: true

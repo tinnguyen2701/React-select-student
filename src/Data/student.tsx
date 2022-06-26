@@ -2,37 +2,37 @@ import { Student } from "../Components/StudentSelector"
 
 export const dataSourceStudent: Student[] = [
     {
-        id: 1,
+        studentId: 1,
         firstName: 'student',
         lastName: '01',
         isAssigned: true
     },
     {
-        id: 2,
+        studentId: 2,
         firstName: 'student',
         lastName: '02',
         isAssigned: false
     },
     {
-        id: 3,
+        studentId: 3,
         firstName: 'student',
         lastName: '03',
         isAssigned: false
     },
     {
-        id: 4,
+        studentId: 4,
         firstName: 'student',
         lastName: '04',
         isAssigned: true
     },
     {
-        id: 5,
+        studentId: 5,
         firstName: 'student',
         lastName: '05',
         isAssigned: false
     },
     {
-        id: 6,
+        studentId: 6,
         firstName: 'student',
         lastName: '06',
         isAssigned: false
